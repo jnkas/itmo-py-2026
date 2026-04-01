@@ -1,0 +1,14 @@
+Имя: Василий, Возраст: 20, task1: True, task2: True, task3: False
+
+Имя: Маша
+Возраст: 29
+task1: True
+task2: True
+task3: True
+
+Имя: Иван
+Возраст: 30
+task1: True
+task2: False
+task3: True
+
