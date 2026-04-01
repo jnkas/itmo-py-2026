@@ -1,0 +1,1 @@
+[{'name': 'sdfsdfs', 'age': 20, 'homework': {'task1': True, 'task2': True, 'task3': False}, 'all_homeworks': 3}, {'name': 'Маша', 'age': 29, 'homework': {'task1': True, 'task2': True, 'task3': True}, 'all_homeworks': 3}]
