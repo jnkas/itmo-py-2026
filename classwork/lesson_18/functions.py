@@ -32,11 +32,33 @@ def create_habit(title):
         "crated_at": date.today().isoformat(),
         "done": []
     }
-    
 
-def del_habit():
-    pass
-    #удаляет привычку
+def add_habit(title):
+    habits = read_data()
+    for hb in habits:
+        if hb["title"] == title:
+            return False
+    new_habit = create_habit(title)
+    habits.append(new_habit)
+    save_data(habits)
+    return True
+
+
+add_habit("чистить зубы 2 раза в день")    
+
+#удаляет привычку
+def del_habit(id):
+    habits = read_data()
+    count = 0
+    for hb in habits:
+
+        if hb["id"] == id:
+            break
+        count +=1
+    
+    habits.pop(count)
+    save_data(habits)
+    
 
 def statistics():
     pass
