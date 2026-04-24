@@ -44,14 +44,13 @@ def add_habit(title):
     return True
 
 
-add_habit("чистить зубы 2 раза в день")    
+# add_habit("чистить зубы 2 раза в день")    
 
 #удаляет привычку
 def del_habit(id):
     habits = read_data()
     count = 0
     for hb in habits:
-
         if hb["id"] == id:
             break
         count +=1
@@ -61,7 +60,25 @@ def del_habit(id):
     
 
 def statistics():
-    pass
+    habits = read_data()
+    done_today_total = 0
+    today = date.today().isoformat()
+    for hb in habits:
+        done = hb["done"]
+        if today in done:
+            done_today_total += 1
+    
+    percent = round((done_today_total / len(habits)) * 100, 1)
+
+    left = len(habits) - done_today_total
+
+    return {
+        "total": len(habits),
+        "done_today": done_today_total,
+        "percent": percent,
+        "left": left
+    }
+
     # формирует статистику выдает {
     # "total":int, 
     # done_today:int, 
@@ -69,6 +86,17 @@ def statistics():
     # left:int
     # }
 
-def toggle_done():
-    pass
-    #переключает статус - выполнено сегодня или нет
+def toggle_done(id):
+    habits = read_data()
+    today = date.today().isoformat()
+    for hb in habits:
+        if hb["id"] == id:
+            done = hb["done"]
+            print(done)
+            if today in done:
+                done.remove(today)
+            else:
+                done.append(today)
+            break 
+    save_data(habits)
+    #переключает статус - выполнено сегодня или нет 
